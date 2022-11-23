@@ -1,0 +1,104 @@
+﻿@using Coatesy.CorneliusCup.Domain.Player;
+@inherits LayoutComponentBase
+
+<MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout Class="d-flex flex-column">
+    <MudAppBar Elevation="1" Color="Color.Success" Fixed="false">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudIcon Icon="@Icons.Material.Filled.SportsGolf" Class="ml-3" Size="Size.Large" />
+        <MudText Typo="Typo.h6" Class="ml-1">Cornelius Cup Golf</MudText>
+        <MudSpacer />
+        <MudTooltip Text="@_DarkLightText">
+            <MudIconButton Color="Color.Inherit" Icon="@_DarkLightIcon" aria-label="@_DarkLightText" OnClick="@(() => ToggleDarkLightMode())" />
+        </MudTooltip>
+        <MudTooltip Text="User Profile">
+            <MudIconButton Color="Color.Inherit" Icon="@Icons.Material.Filled.Person" aria-label="User Profile" />
+        </MudTooltip>
+    </MudAppBar>
+    <MudDrawer @bind-Open="@_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Color="Color.Dark">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent Class="pa-5 flex-grow-1">
+        @Body
+    </MudMainContent>
+    <MudMainContent Class="flex-grow-0">
+        <MudPaper Elevation="16" Class="pa-5">
+            <FooterContent />
+        </MudPaper>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool _drawerOpen = true;
+    private bool _isDarkMode = false;
+    private string _DarkLightIcon = Icons.Material.Filled.DarkMode;
+    private string _DarkLightText = "Switch to Light Theme";
+    private MudThemeProvider? _mudThemeProvider;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (_mudThemeProvider is not null)
+            {
+                _isDarkMode = await _mudThemeProvider.GetSystemPreference();
+                if (_isDarkMode)
+                {
+                    _DarkLightIcon = Icons.Material.Filled.LightMode;
+                    _DarkLightText = "Switch to Light Theme";
+                }
+                StateHasChanged();
+            }
+        }
+    }
+
+    void ToggleDarkLightMode()
+    {
+        _isDarkMode = !_isDarkMode;
+        if (_isDarkMode)
+        {
+            _DarkLightIcon = Icons.Material.Filled.LightMode;
+            _DarkLightText = "Switch to Light Theme";
+        } else
+        {
+            _DarkLightIcon = Icons.Material.Filled.DarkMode;
+            _DarkLightText = "Switch to Dark Theme";
+        }
+    }
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}
+
+@*<div class="container-fluid h-100 d-flex flex-column">
+
+    <div class="row">
+        <div class="col px-0">
+            <HeaderBar />
+        </div>
+    </div>
+
+
+    <div class="row flex-grow-1">
+        <div class="col text-bg-dark d-none d-lg-block" style="max-width: 264px;">
+            <div class="mt-4">
+                <NavMenu />
+            </div>
+            
+        </div>
+        <div class="col px-0 d-flex flex-column">
+            <main class="p-5 flex-grow-1 bg-light">
+                @Body
+            </main>
+
+            <footer class="p-3 pt-0 border-top border-2 text-bg-white">
+                <FooterContent />
+            </footer>
+        </div>
+    </div>
+</div>*@

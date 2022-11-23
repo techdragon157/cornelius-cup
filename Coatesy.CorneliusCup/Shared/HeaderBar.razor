@@ -1,0 +1,52 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+        <NavLink class="navbar-brand" href="" Match="NavLinkMatch.All">
+            Cornelius Cup UI
+        </NavLink>
+        <button title="Navigation menu" class="navbar-toggler d-lg-none collapsed" @onclick="ToggleNavMenu">
+            <span class="bi bi-list" aria-hidden="true"></span>
+        </button>
+
+        <div class="@NavMenuCssClass navbar-collapse" @onclick="ToggleNavMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <NavLink class="nav-link link-light" href="help" title="Help">
+                        <i class="bi bi-question-circle" aria-hidden="true"></i>
+                        <span class="d-lg-none">Help</span>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link link-light" href="settings" title="Settings">
+                        <i class="bi bi-gear" aria-hidden="true"></i>
+                        <span class="d-lg-none">Settings</span>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link link-light" href="login" title="Login/Register">
+                        <i class="bi bi-person-circle" aria-hidden="true"></i>
+                        <span class="">Login/Register</span>
+                    </NavLink>
+                </li>
+            </ul>
+        </div>
+
+        <div class="@NavMenuCssClass mt-3 flex-grow-1" @onclick="ToggleNavMenu">
+            <NavMenu />
+        </div>
+
+    </div>
+</nav>
+
+
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : "mt-2";
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

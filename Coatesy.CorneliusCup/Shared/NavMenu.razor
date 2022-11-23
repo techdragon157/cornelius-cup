@@ -1,0 +1,37 @@
+﻿<MudNavMenu Class="flex-grow-1">
+    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home" title="Home">Home</MudNavLink>
+    <MudNavLink Href="/game" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.DataExploration">Active Game</MudNavLink>
+    <MudNavGroup Title="Settings" Expanded="true" Icon="@Icons.Filled.Settings">
+        <MudNavLink Href="/players" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Person">Players</MudNavLink>
+        <MudNavLink Href="/golfcourses" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.GolfCourse">Golf Courses</MudNavLink>
+    </MudNavGroup>
+    <MudNavLink Href="/stats" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.QueryStats">Stats</MudNavLink>
+</MudNavMenu>
+<div Class="pb-3">
+    <MudNavLink Href="/help" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Help" title="Help">Help</MudNavLink>
+</div>
+
+@*<span class="small text-uppercase">Navigation</span>
+
+<ul id="pages" class="nav flex-column mt-2">
+    <li class="nav-item">
+        <NavLink class="nav-link link-light" href="" Match="NavLinkMatch.All">
+            <i class="pe-1 bi bi-house" aria-hidden="true"></i>Home
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link link-light" href="counter">
+            <i class="pe-1 bi bi-plus-square" aria-hidden="true"></i>Counter
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link link-light" href="fetchdata">
+            <i class="pe-1 bi bi-list-columns" aria-hidden="true"></i>Fetch data
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link disabled" href="notfound">
+            <i class="pe-1 bi bi-exclamation-square" aria-hidden="true"></i>Not Found
+        </NavLink>
+    </li>
+</ul>*@

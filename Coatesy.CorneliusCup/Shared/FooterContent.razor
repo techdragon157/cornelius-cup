@@ -1,0 +1,42 @@
+﻿<MudGrid Justify="Justify.Center">
+    <MudItem>
+        <MudIcon Icon="@Icons.Filled.Copyright" Style="vertical-align: middle"></MudIcon>
+        <span class="text-align-center">@CurrentYear Daniel Coates</span>
+    </MudItem>
+    <MudHidden>
+        <MudSpacer />
+    </MudHidden>
+    <MudItem>
+        <MudStack Row="true">
+            <MudLink Href="#">Privacy Policy</MudLink>
+            <MudLink Href="#">Terms of Service</MudLink>
+            <MudLink Href="#">About</MudLink>
+        </MudStack>
+    </MudItem>
+</MudGrid>
+
+
+
+@*<div class="row align-items-center small">
+    <div class="col">
+        <span class="col text-start fs-3">Cornelius Cup UI</span>
+        <div class="text-start mt-4"><i class="pe-1 bi bi-c-circle"></i>@CurrentYear Daniel Coates</div>
+    </div>
+    <div class="col text-end">
+        <ul class="nav flex-column justify-content-end mt-3">
+            <li class="nav-item">
+                <NavLink class="nav-link link-secondary" href="privacy">Privacy Policy</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link link-secondary" href="terms">Terms of Service</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link link-secondary" href="about">About</NavLink>
+            </li>
+        </ul>
+    </div>
+</div>*@
+
+@code {
+    private string CurrentYear = DateTime.Now.Year.ToString();
+}

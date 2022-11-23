@@ -1,0 +1,11 @@
+/*.nav-header ::deep a {
+    background-color: rgba(0,0,0,0.5);
+}*/
+
+.nav-item ::deep a.active {
+    background-color: rgba(255,255,255,0.25);
+}
+
+.nav-item ::deep a:hover {
+    background-color: rgba(255,255,255,0.1);
+}
